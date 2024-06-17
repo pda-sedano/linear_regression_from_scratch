@@ -12,7 +12,7 @@ def main():
     regressor = SimpleLinearRegressor()
     fit = regressor.fit(x, y)
     slope = regressor.m
-    plt.plot(x_range, regressor.predict(x_range))
+    plt.plot(x_range, regressor.predict(x_range), color='red')
     plt.text(3, 0, f'Error: {"{:.2f}".format(fit)}\nPredicted slope: {"{:.2f}".format(slope)}')
     plt.show()
 
