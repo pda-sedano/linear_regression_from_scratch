@@ -5,7 +5,7 @@ class SimpleLinearRegressor:
     """Performs simple linear regression."""
 
     def __init__(self):
-        self.m = None
+        self.k = None
 
     def predict(self, x):
         """
@@ -14,10 +14,10 @@ class SimpleLinearRegressor:
         :return: The predicted y-value(s).
         """
 
-        if self.m is None:
+        if self.k is None:
             raise RegressionModelNotFitError('Regression model not fit!')
 
-        return self.m * x
+        return self.k * x
 
     def fit(self, x, y):
         """
@@ -27,6 +27,6 @@ class SimpleLinearRegressor:
         :return: The sum-of-squares error of the fitted model.
         """
 
-        self.m = x @ y / (x @ x)
+        self.k = x @ y / (x @ x)
         diff = self.predict(x) - y
         return diff @ diff
