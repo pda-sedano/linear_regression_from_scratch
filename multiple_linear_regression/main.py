@@ -5,12 +5,10 @@ from multiple_linear_regressor import MultipleLinearRegressor
 
 def main():
     regressor = MultipleLinearRegressor()
-    x, y = generate_noisy_data(100, 3, np.array([5, 1, 3]), np.array([0, 100]), 50)
-    regressor.fit(x, y)
-    print(f'lstsq = {np.linalg.lstsq(x, y)}')
-
-    for datum in x:
-        print(regressor.predict(datum))
+    x, y = generate_noisy_data(500, 10, np.array([-10, 5, -8, -2, 1, -3, 4, -5, -1, 3]), np.array([-100, 100]), 50)
+    sse = regressor.fit(x, y)
+    print(f'Sum Squared Error: {sse}')
+    print(f'Beta: {regressor.beta}')
 
 
 if __name__ == '__main__':
