@@ -1,6 +1,6 @@
 import numpy as np
 from utils import solve_upper_triangular
-from exceptions import RegressionModelNotFitError
+from linear_regression.exceptions import RegressionModelNotFitError
 
 
 class MultipleLinearRegressor:
@@ -11,9 +11,9 @@ class MultipleLinearRegressor:
 
     def predict(self, x):
         """
-        Gives a predicted set of values from a given set of input values
-        :param x: 1D or 2D array of values
-        :return: 1D array of predictions
+        Gives a predicted vector of y-values from a given array of x-values.
+        :param x: Vector or matrix of x-values.
+        :return: Vector of predicted y-values.
         """
 
         if self.beta is None:
@@ -23,10 +23,10 @@ class MultipleLinearRegressor:
 
     def fit(self, x, y):
         """
-        Fits the model to some data
-        :param x: 2D array of input values
-        :param y: 1D array of predictions
-        :return: The MSE of the model
+        Fits the model based on a matrix of x-values and vector of corresponding y-values.
+        :param x: Matrix of x-values.
+        :param y: Vector of y-values.
+        :return: The sum-of-squares error of the fitted model.
         """
 
         x_t = x.transpose()

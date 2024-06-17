@@ -1,3 +1,6 @@
+from linear_regression.exceptions import RegressionModelNotFitError
+
+
 class SimpleLinearRegressor:
     """Performs simple linear regression."""
 
@@ -5,18 +8,24 @@ class SimpleLinearRegressor:
         self.m = None
 
     def predict(self, x):
-        """Gives a predicted set of values from a given set of input values.\n
-        x - Number or array."""
+        """
+        Gives predicted y-values from an input x-value, or vector of x-values.
+        :param x: The input value(s).
+        :return: The predicted y-value(s).
+        """
 
         if self.m is None:
-            raise TypeError('Regression model not fit!')
+            raise RegressionModelNotFitError('Regression model not fit!')
 
         return self.m * x
 
     def fit(self, x, y):
-        """Fits the model and returns the sum-of-squares error of the fit.\n
-        x - Array of x values.\n
-        y - Array of y values."""
+        """
+        Fits the model based on the given vectors of x and y values.
+        :param x: A vector of x-values.
+        :param y: A vector of y-values.
+        :return: The sum-of-squares error of the fitted model.
+        """
 
         self.m = x @ y / (x @ x)
         diff = self.predict(x) - y
