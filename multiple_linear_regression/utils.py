@@ -4,13 +4,13 @@ from linear_regression.exceptions import UnsolvableError
 
 def generate_noisy_data(n_data_points, n_independent_variables, beta, x_range, noise_stddev):
     """
-    Generates 2d data points based on a linear relationship with added Gaussian noise.
+    Generates data points based on a linear relationship with added Gaussian noise.
     :param n_data_points: The number of data points to generate.
     :param n_independent_variables: The number of independent variables in each data point.
     :param beta: The vector of coefficients for the independent variables.
     :param x_range: The range from which to draw x-values.
     :param noise_stddev: The standard deviation of the Gaussian noise to add to each y-value.
-    :return: Vectors of x and y values.
+    :return: Matrix of x-values and vector of y-values.
     """
 
     x = np.random.uniform(*x_range, (n_data_points, n_independent_variables))
@@ -33,7 +33,7 @@ def solve_upper_triangular(a, b):
         unset_var_indices = np.where((tracker == 0) & (row != 0))[0]
 
         if len(unset_var_indices) == 0:
-            if np.isclose(result @ row, val, rtol=0):
+            if np.isclose(result @ row, val):
                 continue
             else:
                 raise UnsolvableError('The given values of a and b result in an unsolvable equation.')
