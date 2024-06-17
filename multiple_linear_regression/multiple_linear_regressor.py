@@ -30,11 +30,8 @@ class MultipleLinearRegressor:
         """
 
         x_t = x.transpose()
-
         q, r = np.linalg.qr(x_t @ x)
         vec = np.linalg.inv(q) @ x_t @ y
-
         self.beta = solve_upper_triangular(r, vec)
-
         diff = self.predict(x) - y
         return diff @ diff

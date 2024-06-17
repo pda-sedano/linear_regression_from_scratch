@@ -32,10 +32,9 @@ def solve_upper_triangular(a, b):
     for row, val in zip(a[::-1], b[::-1]):
         unset_var_indices = np.where((tracker == 0) & (row != 0))[0]
 
-        # What to do if there are no unset vars?
         if len(unset_var_indices) == 0:
             if np.isclose(result @ row, val, rtol=0):
-                break
+                continue
             else:
                 raise UnsolvableError('The given values of a and b result in an unsolvable equation.')
 
