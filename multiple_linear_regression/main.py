@@ -5,7 +5,11 @@ from multiple_linear_regressor import MultipleLinearRegressor
 
 def main():
     regressor = MultipleLinearRegressor()
-    x, y = generate_noisy_data(500, 10, np.array([-10, 5, -8, -2, 1, -3, 4, -5, -1, 3]), np.array([-100, 100]), 50)
+    x, y = generate_noisy_data(n_data_points=500,
+                               n_independent_variables=10,
+                               beta=np.array([-10, 5, -8, -2, 1, -3, 4, -5, -1, 3]),
+                               x_range=np.array([-100, 100]),
+                               noise_stddev=50)
     sse = regressor.fit(x, y)
     print(f'Sum Squared Error: {sse}')
     print(f'Beta: {regressor.beta}')
