@@ -15,7 +15,7 @@ class SimpleLinearRegressor:
         """
 
         if self.k is None:
-            raise RegressionModelNotFitError('Regression model not fit!')
+            raise RegressionModelNotFitError('Oh no! The model has not been fit!')
 
         return self.k * x
 

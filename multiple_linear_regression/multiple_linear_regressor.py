@@ -11,13 +11,13 @@ class MultipleLinearRegressor:
 
     def predict(self, x):
         """
-        Gives a predicted vector of y-values from a given array of x-values.
+        Gives predicted y-values from a given array of x-values.
         :param x: Vector or matrix of x-values.
         :return: Vector of predicted y-values.
         """
 
         if self.beta is None:
-            raise RegressionModelNotFitError('The model has not been fit!')
+            raise RegressionModelNotFitError('Oh no! The model has not been fit!')
 
         return x @ self.beta
 
